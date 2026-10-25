@@ -13,6 +13,8 @@ h1 {
   text-align: center;
 }
 
+
+
 /* ---------- Form and search ---------- */
 #add-form {
   display: flex;
@@ -22,7 +24,13 @@ h1 {
 }
 
 #task-input {
-  flex: 1;
+  flex: 1 1 auto;     /* takes all the free space */
+  min-width: 0;       /* lets it shrink instead of collapsing weirdly */
+}
+
+#priority-input {
+  flex: 0 0 14px;    /* fixed width, never stretches */
+  width: 140px;
 }
 
 input, select, button {
@@ -152,5 +160,13 @@ input, select, button {
 
   #add-form {
     flex-direction: column;
+  }
+  #add-form {
+    flex-direction: column;
+  }
+
+  #priority-input {
+    flex: none;
+    width: 100%;
   }
 }
