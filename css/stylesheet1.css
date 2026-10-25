@@ -161,10 +161,6 @@ input, select, button {
   #add-form {
     flex-direction: column;
   }
-  #add-form {
-    flex-direction: column;
-  }
-
   #priority-input {
     flex: none;
     width: 100%;
