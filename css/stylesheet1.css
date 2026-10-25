@@ -1,0 +1,156 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background: #f4f4f4;
+}
+
+h1 {
+  text-align: center;
+}
+
+/* ---------- Form and search ---------- */
+#add-form {
+  display: flex;
+  gap: 8px;
+  max-width: 700px;
+  margin: 0 auto 10px;
+}
+
+#task-input {
+  flex: 1;
+}
+
+input, select, button {
+  padding: 10px;
+  font-size: 16px;
+}
+
+#search-input {
+  display: block;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto 15px;
+}
+
+/* ---------- Message and progress ---------- */
+#message {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  color: #b00020;
+  font-weight: bold;
+  min-height: 24px;
+}
+
+#stats {
+  max-width: 700px;
+  margin: 10px auto 20px;
+  text-align: center;
+}
+
+.progress-bar {
+  height: 16px;
+  background: #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 5px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #2e9e4f;
+}
+
+/* ---------- Board: 3 columns on laptop ---------- */
+#board {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 15px;
+}
+
+.column {
+  display: block;
+  height: auto;
+  overflow: visible;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.column h2 {
+  margin-top: 0;
+}
+
+.col-todo {
+  background: #ffb3b3;
+}
+
+.col-progress {
+  background: #fff1a8;
+}
+
+.col-done {
+  background: #b8e6c1;
+}
+
+/* ---------- Cards ---------- */
+.card {
+  background: white;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+}
+
+.card h3 {
+  margin: 0 0 5px;
+  font-size: 18px;
+}
+
+.card p {
+  margin: 0 0 8px;
+  font-size: 14px;
+}
+
+.card button {
+  font-size: 14px;
+  padding: 6px 10px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+.card .urgent{
+  background: #eb494c;
+  padding: 5px;
+  border-radius: 20px;
+  color: #f5f2f2;
+  font-weight: bold;
+}
+/* Done cards look inactive */
+.card.done {
+  color: gray;
+  background: #eeeeee;
+}
+
+.empty-text {
+  color: #555;
+  font-style: italic;
+}
+.card.done .urgent {
+  color: #5c5b5b;
+  background: #969595;
+  font-weight: normal;
+}
+
+/* ---------- Phone: 1 column, 3 rows ---------- */
+@media (max-width: 768px) {
+  #board {
+    grid-template-columns: 1fr;
+  }
+
+  #add-form {
+    flex-direction: column;
+  }
+}

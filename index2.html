@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Character Creato task 3</title>
+  <!-- Bootstrap CSS only (styling). No Bootstrap JS, no jQuery. -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/stylesheet2.css" rel="stylesheet">
+   <script src="js/script2.js" defer></script>
+</head>
+    <body>
+        <div class="container py-4">
+        <h1 class="h3 mb-4 text-center">⚔️ Character Creator</h1>
+        
+        <div class="row g-4">
+        
+            <!-- ================= FORM ================= -->
+            <div class="col-lg-7">
+            <div class="card shadow-sm">
+                <div class="card-body">
+        
+                <!-- Error summary (hidden until a failed submit) -->
+                <div id="errorSummary" class="alert alert-danger d-none" role="alert"></div>
+        
+                <form id="characterForm" novalidate>
+        
+                    <!-- Name -->
+                    <div class="mb-3">
+                    <label for="charName" class="form-label">Name</label>
+                    <input type="text" id="charName" class="form-control"
+                            required minlength="3" maxlength="15" pattern="[A-Za-z]+"
+                            placeholder="e.g. Thorin" aria-describedby="charNameError">
+                    <div id="charNameError" class="invalid-feedback"></div>
+                    </div>
+        
+                    <!-- Class -->
+                    <div class="mb-3">
+                    <label for="charClass" class="form-label">Class</label>
+                    <select id="charClass" class="form-select" required aria-describedby="charClassError">
+                        <option value="">Choose a class...</option>
+                        <option value="warrior">Warrior (needs Strength 5+)</option>
+                        <option value="mage">Mage (needs Magic 5+)</option>
+                        <option value="archer">Archer (needs Agility 5+)</option>
+                        <option value="healer">Healer (needs Defense 5+)</option>
+                    </select>
+                    <div id="charClassError" class="invalid-feedback"></div>
+                    </div>
+        
+                    <!-- Color -->
+                    <div class="mb-3">
+                    <label for="charColor" class="form-label">Color</label>
+                    <select id="charColor" class="form-select" required aria-describedby="charColorError">
+                        <option value="">Choose a color...</option>
+                        <option value="red">Red</option>
+                        <option value="blue">Blue</option>
+                        <option value="green">Green</option>
+                        <option value="purple">Purple</option>
+                    </select>
+                    <div id="charColorError" class="invalid-feedback"></div>
+                    </div>
+        
+                    <!-- Skills -->
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="fw-semibold">Skills (1–10 each, exactly 20 points)</span>
+                    <span class="badge text-bg-primary fs-6">Points left: <span id="pointsLeft">20</span></span>
+                    </div>
+        
+                    <div class="row g-3 mb-3">
+                    <div class="col-sm-6">
+                        <label for="strength" class="form-label">Strength</label>
+                        <input type="number" id="strength" class="form-control skill"
+                            required min="1" max="10" step="1" aria-describedby="strengthError">
+                        <div id="strengthError" class="invalid-feedback"></div>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="agility" class="form-label">Agility</label>
+                        <input type="number" id="agility" class="form-control skill"
+                            required min="1" max="10" step="1" aria-describedby="agilityError">
+                        <div id="agilityError" class="invalid-feedback"></div>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="magic" class="form-label">Magic</label>
+                        <input type="number" id="magic" class="form-control skill"
+                            required min="1" max="10" step="1" aria-describedby="magicError">
+                        <div id="magicError" class="invalid-feedback"></div>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="defense" class="form-label">Defense</label>
+                        <input type="number" id="defense" class="form-control skill"
+                            required min="1" max="10" step="1" aria-describedby="defenseError">
+                        <div id="defenseError" class="invalid-feedback"></div>
+                    </div>
+                    </div>
+        
+                    <button type="submit" class="btn btn-primary">Create character</button>
+                </form>
+                </div>
+            </div>
+        
+            <!-- Final result appears here -->
+            <div id="result" class="mt-4"></div>
+            </div>
+        
+            <!-- ================= LIVE PREVIEW ================= -->
+            <div class="col-lg-5">
+            <div class="sticky-preview">
+                <div id="preview" class="card shadow-sm">
+                <div class="card-body">
+                    <h2 class="h6 text-uppercase text-muted">Live preview</h2>
+                    <h3 id="pvName" class="h4">—</h3>
+                    <p class="mb-1">Class: <strong id="pvClass">—</strong></p>
+                    <p class="mb-3">Color: <strong id="pvColor">—</strong></p>
+                    <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between">Strength <strong id="pvStrength">0</strong></li>
+                    <li class="list-group-item d-flex justify-content-between">Agility <strong id="pvAgility">0</strong></li>
+                    <li class="list-group-item d-flex justify-content-between">Magic <strong id="pvMagic">0</strong></li>
+                    <li class="list-group-item d-flex justify-content-between">Defense <strong id="pvDefense">0</strong></li>
+                    </ul>
+                    <p class="mt-3 mb-0">Points left: <strong id="pvPoints">20</strong></p>
+                </div>
+                </div>
+            </div>
+            </div>
+        
+        </div>
+        </div>
+
+    </body>
+</html>
