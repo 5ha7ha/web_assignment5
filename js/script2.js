@@ -163,6 +163,7 @@
     }
  
     summary.classList.add("d-none");
+    takenNames.push(nameInput.value.trim().toLowerCase()); //taken name
     showResult();
     resetForm();
   });
@@ -176,26 +177,25 @@
   }
  
   function showResult() {
-    result.innerHTML = "";
  
-    const card = createElement("div", "card shadow-sm");
+    const card = createElement("div", "card shadow-sm mb-3");
     card.style.border = "4px solid " + colorHex[colorInput.value];
  
-    const body = createElement("div", "card-body");
-    body.appendChild(createElement("h2", "h5 text-success", "✅ Character created!"));
-    body.appendChild(createElement("h3", "h4", nameInput.value.trim()));
-    body.appendChild(createElement("p", "mb-1", "Class: " + capitalize(classInput.value)));
-    body.appendChild(createElement("p", "mb-3", "Color: " + capitalize(colorInput.value)));
+    const cardBody = createElement("div", "card-body");
+    cardBody.appendChild(createElement("h2", "h5 text-success", "✅ Character created!"));
+    cardBody.appendChild(createElement("h3", "h4", nameInput.value.trim()));
+    cardBody.appendChild(createElement("p", "mb-1", "Class: " + capitalize(classInput.value)));
+    cardBody.appendChild(createElement("p", "mb-3", "Color: " + capitalize(colorInput.value)));
  
     const list = createElement("ul", "list-group");
     skillInputs.forEach(function (input) {
       const label = capitalize(input.id) + ": " + input.value;
       list.appendChild(createElement("li", "list-group-item", label));
     });
-    body.appendChild(list);
+    cardBody.appendChild(list);
  
-    card.appendChild(body);
-    result.appendChild(card);
+    card.appendChild(cardBody);
+    result.append(card);
   }
  
   // ---------- Reset ----------

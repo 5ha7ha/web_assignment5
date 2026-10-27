@@ -30,6 +30,7 @@ const columns = [
 const addForm = document.getElementById("add-form");
 const taskInput = document.getElementById("task-input");
 const priorityInput = document.getElementById("priority-input");
+const hoursInput = document.getElementById("hours-input");
 const searchInput = document.getElementById("search-input");
 const messageBox = document.getElementById("message");
 const progressBox = document.getElementById("stats");
@@ -53,7 +54,7 @@ function doneHours() {
   let total = 0;
   for (const task of tasks) {
     if (task.status === "done") {
-      total = total + task.hours;
+      total += task.hours;
     }
   }
   return total;
@@ -101,11 +102,11 @@ function createCard(task, position) {
   title.textContent = task.title;
  
   const info = document.createElement("p");
-  let infoText = task.priority + " priority, " + task.hours + " h";
+  info.textContent = task.priority + " priority, " + task.hours + " h";
   if (task.urgent) {
     const urgentspan = document.createElement("span");
     urgentspan.classList.add("urgent");
-    urgentspan.textContent = " urgent!";
+    urgentspan.textContent = "urgent!";
     info.append(urgentspan);
   }
   
@@ -212,7 +213,8 @@ function render() {
 addForm.addEventListener("submit", function (event) {
   event.preventDefault();
   const text = taskInput.value.trim();
-  if (text === "") {
+   const hours = Number(hoursInput.value); 
+  if (text === "" || hours <= 0) {
     return;
   }
  
@@ -220,13 +222,14 @@ addForm.addEventListener("submit", function (event) {
     id: nextId,
     title: text,
     priority: priorityInput.value,
-    hours: 1,
+    hours: hours,
     urgent: priorityInput.value === "high",
     status: "todo"
   });
   nextId++;
   message = "";
-  taskInput.value = "";
+  taskInput.value = "";  
+  hoursInput.value = 1;  // reset to the default
   render();
 });
  
